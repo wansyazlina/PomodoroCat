@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  PomodoroCat
 //
 //  Created by Syazlina Aasim on 11/05/2026.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +20,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeView()
+   
 }

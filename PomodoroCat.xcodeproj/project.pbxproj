@@ -30,11 +30,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F23C6D8A2FB1D2BE007661D3 /* PomodoroCat */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PomodoroCat;
-			sourceTree = "<group>";
-		};
 		F23C6D982FB1D2C0007661D3 /* PomodoroCatTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PomodoroCatTests;
@@ -43,6 +38,36 @@
 		F23C6DA22FB1D2C0007661D3 /* PomodoroCatUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PomodoroCatUITests;
+			sourceTree = "<group>";
+		};
+		F23C6DBD2FB1E133007661D3 /* App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = App;
+			sourceTree = "<group>";
+		};
+		F23C6DC12FB1E175007661D3 /* Views */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F23C6DC22FB1E18D007661D3 /* Assets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		F23C6DC52FB1E1B7007661D3 /* Services */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F23C6DCC2FB1E228007661D3 /* ViewModels */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F23C6DD22FB1E2B3007661D3 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,10 +100,15 @@
 		F23C6D7F2FB1D2BE007661D3 = {
 			isa = PBXGroup;
 			children = (
-				F23C6D8A2FB1D2BE007661D3 /* PomodoroCat */,
+				F23C6DCC2FB1E228007661D3 /* ViewModels */,
+				F23C6DC22FB1E18D007661D3 /* Assets */,
+				F23C6DBD2FB1E133007661D3 /* App */,
 				F23C6D982FB1D2C0007661D3 /* PomodoroCatTests */,
 				F23C6DA22FB1D2C0007661D3 /* PomodoroCatUITests */,
 				F23C6D892FB1D2BE007661D3 /* Products */,
+				F23C6DC12FB1E175007661D3 /* Views */,
+				F23C6DC52FB1E1B7007661D3 /* Services */,
+				F23C6DD22FB1E2B3007661D3 /* Models */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,7 +138,12 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				F23C6D8A2FB1D2BE007661D3 /* PomodoroCat */,
+				F23C6DBD2FB1E133007661D3 /* App */,
+				F23C6DC12FB1E175007661D3 /* Views */,
+				F23C6DC22FB1E18D007661D3 /* Assets */,
+				F23C6DC52FB1E1B7007661D3 /* Services */,
+				F23C6DCC2FB1E228007661D3 /* ViewModels */,
+				F23C6DD22FB1E2B3007661D3 /* Models */,
 			);
 			name = PomodoroCat;
 			packageProductDependencies = (
