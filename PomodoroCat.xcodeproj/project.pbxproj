@@ -27,6 +27,7 @@
 		F23C6D882FB1D2BE007661D3 /* PomodoroCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodoroCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F23C6D952FB1D2C0007661D3 /* PomodoroCatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomodoroCatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F23C6D9F2FB1D2C0007661D3 /* PomodoroCatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PomodoroCatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2FFA4BD2FB249CC00781CCF /* PomodoroCat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PomodoroCat-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -70,6 +71,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F2FFA4BA2FB2481600781CCF /* Resources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,7 @@
 		F23C6D7F2FB1D2BE007661D3 = {
 			isa = PBXGroup;
 			children = (
+				F2FFA4BD2FB249CC00781CCF /* PomodoroCat-Info.plist */,
 				F23C6DCC2FB1E228007661D3 /* ViewModels */,
 				F23C6DC22FB1E18D007661D3 /* Assets */,
 				F23C6DBD2FB1E133007661D3 /* App */,
@@ -109,6 +116,7 @@
 				F23C6DC12FB1E175007661D3 /* Views */,
 				F23C6DC52FB1E1B7007661D3 /* Services */,
 				F23C6DD22FB1E2B3007661D3 /* Models */,
+				F2FFA4BA2FB2481600781CCF /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +152,7 @@
 				F23C6DC52FB1E1B7007661D3 /* Services */,
 				F23C6DCC2FB1E228007661D3 /* ViewModels */,
 				F23C6DD22FB1E2B3007661D3 /* Models */,
+				F2FFA4BA2FB2481600781CCF /* Resources */,
 			);
 			name = PomodoroCat;
 			packageProductDependencies = (
@@ -434,6 +443,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PomodoroCat-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -464,6 +475,8 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PomodoroCat-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

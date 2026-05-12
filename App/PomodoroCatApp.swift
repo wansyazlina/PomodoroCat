@@ -11,8 +11,7 @@ import SwiftUI
 struct PomodoroCatApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
-                .frame(width: 410, height: 410)
+            AppRootView()
         }
         .windowResizability(.contentSize)
     }
