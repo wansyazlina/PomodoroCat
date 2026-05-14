@@ -12,65 +12,93 @@ struct SlideToStartView: View {
     @State private var dragOffset: CGFloat = 0
 
     private let barWidth: CGFloat = 220
-    private let barHeight: CGFloat = 18
-    private let knobSize: CGFloat = 42
+    private let barHeight: CGFloat = 20
+    private let knobSize: CGFloat = 45
+    private let sliderHeight: CGFloat = 45
+
+    private var maxOffset: CGFloat {
+        barWidth - knobSize
+    }
 
     var body: some View {
+        ZStack {
+            // Pixelated slider bar only
+            sliderBar
+                .layerEffect(
+                    ShaderLibrary.pixelate(.float(4)),
+                    maxSampleOffset: .zero
+                )
+
+            // Star knob image, not affected by Metal shader
+            starKnob
+        }
+        .frame(width: barWidth, height: sliderHeight)
+        .border(Color.red, width: 1)
+        .contentShape(Rectangle())
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    dragOffset = min(max(value.translation.width, 0), maxOffset)
+                }
+                .onEnded { _ in
+                    if dragOffset >= maxOffset * 0.85 {
+                        withAnimation(.easeOut(duration: 0.2)) {
+                            dragOffset = maxOffset
+                        }
+
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            onComplete()
+                        }
+                    } else {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                            dragOffset = 0
+                        }
+                    }
+                }
+        )
+    }
+
+    private var sliderBar: some View {
         ZStack(alignment: .leading) {
-            // Track/bar
+            // Background track
             Capsule()
-                .fill(Color.black.opacity(0.2))
+                .fill(Color(red: 0.68, green: 0.64, blue: 0.74))
                 .frame(width: barWidth, height: barHeight)
                 .overlay(
                     Capsule()
-                        .stroke(Color.black, lineWidth: 2)
+                        .stroke(Color.black, lineWidth: 4)
                 )
 
-            // Filled progress
+            // Pink filled progress
             Capsule()
-                .fill(Color.black)
-                .frame(width: dragOffset + knobSize / 2, height: barHeight)
-
-            // Slider knob
-            Circle()
-                .fill(Color.white)
-                .frame(width: knobSize, height: knobSize)
-                .overlay(
-                    Circle()
-                        .stroke(Color.black, lineWidth: 3)
+                .fill(Color(red: 1, green: 172/255, blue: 250/255))
+                .frame(
+                    width: max(dragOffset + knobSize / 2, barHeight),
+                    height: barHeight
                 )
                 .overlay(
-                    Text(">")
-                        .font(.system(size: 22, weight: .bold, design: .monospaced))
-                        .foregroundStyle(.black)
+                    Capsule()
+                        .stroke(Color.black, lineWidth: 4)
                 )
-                .offset(x: dragOffset)
-                .gesture(
-                    DragGesture()
-                        .onChanged { value in
-                            let maxOffset = barWidth - knobSize
-                            dragOffset = min(max(value.translation.width, 0), maxOffset)
-                        }
-                        .onEnded { _ in
-                            let maxOffset = barWidth - knobSize
-
-                            if dragOffset >= maxOffset * 0.85 {
-                                withAnimation(.easeOut(duration: 0.2)) {
-                                    dragOffset = maxOffset
-                                }
-
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                    onComplete()
-                                }
-                            } else {
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                    dragOffset = 0
-                                }
-                            }
-                        }
+                .mask(
+                    Capsule()
+                        .frame(width: barWidth, height: barHeight)
                 )
         }
-        .frame(width: barWidth, height: knobSize)
+    }
+
+    private var starKnob: some View {
+        HStack {
+            Image("pixelStar")
+                .resizable()
+                .interpolation(.none)
+                .scaledToFit()
+                .frame(width: knobSize, height: knobSize)
+                .offset(x: dragOffset)
+
+            Spacer()
+        }
+        .frame(width: barWidth, alignment: .leading)
     }
 }
 
@@ -78,5 +106,6 @@ struct SlideToStartView: View {
     SlideToStartView {
         print("Go to next page")
     }
-    .padding()
+    
+    .background(Color.white)
 }

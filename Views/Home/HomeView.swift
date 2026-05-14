@@ -16,31 +16,32 @@ struct HomeView: View {
         ZStack {
             backgroundLayer
 
-            VStack(spacing: 24) {
+            VStack(spacing: 10) {
                 Text("MY POMODORO CAT")
-                    .font(.custom("VT323-Regular",size: 50, relativeTo: .title))
+                    .font(.custom("VT323-Regular", size: 46, relativeTo: .title))
                     .foregroundStyle(.black)
 
                 Text(viewModel.catName)
-                    .font(.custom("Silkscreen",size: 30, relativeTo: .title))
+                    .font(.custom("Silkscreen", size: 20, relativeTo: .title))
                     .foregroundStyle(.black)
 
                 catIntroView
 
-                Text("slide to start")
-                    .font(.custom("Silkscreen",size: 20, relativeTo: .caption))
-                    .foregroundStyle(.black)
+                VStack(spacing: 3) {
+                    Text("slide to start")
+                        .font(.custom("ArchitypeStedelijkW00", size: 18, relativeTo: .caption))
+                        .foregroundStyle(.black)
 
-                SlideToStartView {
-                    viewModel.startIntro()
-                    onStart()
+                    SlideToStartView {
+                        viewModel.startIntro()
+                        onStart()
+                    }
                 }
             }
             .padding()
         }
-        .frame(width: 600, height: 600)
+        .frame(width: 450, height: 450)
     }
-    
     
     private var backgroundLayer: some View {
          ZStack {
@@ -60,29 +61,16 @@ struct HomeView: View {
      }
     
     private var catIntroView: some View {
-            ZStack {
-                Rectangle()
-                    .fill(Color.clear)
-                    .frame(width: 326, height: 252)
-                    .overlay(
-                        Rectangle()
-                            .stroke(Color.black, lineWidth: 2)
-                    )
+        ZStack {
 
-                /*
-                Later when your cat PNG is ready:
-
-                Image(viewModel.catImageName)
-                    .resizable()
-                    .interpolation(.none)
-                    .scaledToFit()
-                    .frame(width: 180, height: 180)
-                */
-
-                Text("cat animation")
-                    .font(.system(size: 22, weight: .regular, design: .monospaced))
-            }
+            Image("cat_idle_0")
+                .resizable()
+                .interpolation(.none)
+                .scaledToFit()
+                .frame(width: 230, height: 230)
+                .border(Color.red, width: 2)
         }
+    }
     }
     
     
