@@ -12,6 +12,25 @@ struct AppRootView: View {
     @State private var homeViewModel = HomeViewModel()
 
     var body: some View {
+        ZStack(alignment: .topLeading) {
+            currentPage
+            
+            // Invisible draggable strip
+            DraggableWindowArea()
+                .frame(height: 36)
+                .frame(maxWidth: .infinity)
+                .background(Color.clear)
+
+            WindowControls()
+                .padding(8)
+        }
+        .frame(width: 480, height: 480)
+        .background(WindowAccessor())
+        
+    }
+
+    @ViewBuilder
+    private var currentPage: some View {
         switch currentScreen {
         case .home:
             HomeView(
@@ -23,9 +42,7 @@ struct AppRootView: View {
             )
 
         case .timer:
-            TimerView(
-                homeViewModel: homeViewModel
-            )
+            TimerView(homeViewModel: homeViewModel)
         }
     }
 }

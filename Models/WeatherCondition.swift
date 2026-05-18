@@ -8,8 +8,8 @@ import Foundation
 
 enum WeatherCondition {
     case sunny
-    case cloudy
-    case rainy
-    case stormy
-    case night
+    case cloudy //day or night
+    case rainy //day or night
+    case stormy //day or night
+    case night// clear
 }

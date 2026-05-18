@@ -14,7 +14,8 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-            Color.white// change to backgroundLayer later
+            backgroundLayer
+                .allowsHitTesting(false)
 
             VStack(spacing: 10) {
                 Text("MY POMODORO CAT")

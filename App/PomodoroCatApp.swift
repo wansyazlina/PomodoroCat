@@ -12,7 +12,11 @@ struct PomodoroCatApp: App {
     var body: some Scene {
         WindowGroup {
             AppRootView()
+                .ignoresSafeArea()
+            
+         
         }
+        .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
     }
 }

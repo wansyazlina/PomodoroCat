@@ -6,86 +6,91 @@
 //
 
 import Foundation
+import SwiftUI
 
 @Observable
 class HomeViewModel {
     var catName: String = "moiran"
-
-    // Landing page default
+    
     var catState: CatState = .idle
-
-    // Placeholder for now.
-    // Later, this can come from a real weather service.
-    var weatherCondition: WeatherCondition = .cloudy
-
+    
+    // Set sunny for testing your new background
+    var weatherCondition: WeatherCondition = .sunny
+    
     func startIntro() {
         catState = .focused
     }
-
+    
     func updateCatState(_ newState: CatState) {
         catState = newState
     }
-
+    
     var catAnimationTag: String {
         switch catState {
         case .idle:
             return "tailwiggle"
         case .focused:
             return "tailwiggle"
-
         case .resting:
             return "tailwiggle"
-
         case .completed:
             return "tailwiggle"
-       
         }
     }
-
+    
     var backgroundTheme: PixelBackgroundTheme {
         switch weatherCondition {
         case .sunny:
             return PixelBackgroundTheme(
-                baseImageName: "bg_sunny",
+                backgroundColor: Color(red: 176/255, green: 211/255, blue: 230/255),
                 movingLayers: [
-                    MovingBackgroundLayer(imageName: "clouds_far", speed: 45, opacity: 0.5),
-                    MovingBackgroundLayer(imageName: "clouds_near", speed: 25, opacity: 0.9)
+                    MovingBackgroundLayer(
+                        imageName: "clouds_back",
+                        speed: 55,
+                        opacity: 0.6
+                    ),
+
+                    MovingBackgroundLayer(
+                        frameNames: [
+                            "sparkles_1",
+                            "sparkles_2",
+                            "sparkles_3",
+                            "sparkles_4"
+                        ],
+                        speed: 35,
+                        opacity: 0.8,
+                        frameDuration: 0.25
+                    ),
+
+                    MovingBackgroundLayer(
+                        imageName: "clouds_front",
+                        speed: 22,
+                        opacity: 1.0
+                    )
                 ]
             )
-
         case .cloudy:
             return PixelBackgroundTheme(
-                baseImageName: "bg_cloudy",
-                movingLayers: [
-                    MovingBackgroundLayer(imageName: "clouds_far_gray", speed: 55, opacity: 0.7),
-                    MovingBackgroundLayer(imageName: "clouds_near_gray", speed: 35, opacity: 1.0)
-                ]
+                backgroundColor: Color(red: 180/255, green: 190/255, blue: 200/255),
+                movingLayers: []
             )
-
+            
         case .rainy:
             return PixelBackgroundTheme(
-                baseImageName: "bg_rainy",
-                movingLayers: [
-                    MovingBackgroundLayer(imageName: "rain_layer", speed: 8, opacity: 0.8),
-                    MovingBackgroundLayer(imageName: "clouds_rain", speed: 35, opacity: 0.9)
-                ]
+                backgroundColor: Color(red: 120/255, green: 145/255, blue: 165/255),
+                movingLayers: []
             )
-
+            
         case .stormy:
             return PixelBackgroundTheme(
-                baseImageName: "bg_stormy",
-                movingLayers: [
-                    MovingBackgroundLayer(imageName: "storm_clouds", speed: 25, opacity: 1.0)
-                ]
+                backgroundColor: Color(red: 70/255, green: 80/255, blue: 100/255),
+                movingLayers: []
             )
-
+            
         case .night:
             return PixelBackgroundTheme(
-                baseImageName: "bg_night",
-                movingLayers: [
-                    MovingBackgroundLayer(imageName: "stars_layer", speed: 80, opacity: 0.8),
-                    MovingBackgroundLayer(imageName: "night_clouds", speed: 50, opacity: 0.6)
-                ]
+                backgroundColor: Color(red: 25/255, green: 30/255, blue: 55/255),
+                movingLayers: []
             )
         }
     }
