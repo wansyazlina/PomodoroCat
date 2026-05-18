@@ -9,20 +9,27 @@ import SwiftUI
 
 struct AppRootView: View {
     @State private var currentScreen: AppScreen = .home
+    @State private var homeViewModel = HomeViewModel()
 
     var body: some View {
         switch currentScreen {
         case .home:
-            HomeView {
-                currentScreen = .timer
-            }
+            HomeView(
+                viewModel: homeViewModel,
+                onStart: {
+                    homeViewModel.updateCatState(.focused)
+                    currentScreen = .timer
+                }
+            )
 
         case .timer:
-            TimerView()
+            TimerView(
+                homeViewModel: homeViewModel
+            )
         }
     }
 }
 
-#Preview {
+#Preview("Full App") {
     AppRootView()
 }

@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var viewModel = HomeViewModel()
-    
+    @Bindable var viewModel: HomeViewModel
+
     var onStart: () -> Void = { }
 
     var body: some View {
         ZStack {
-            backgroundLayer
+            Color.white// change to backgroundLayer later
 
             VStack(spacing: 10) {
                 Text("MY POMODORO CAT")
-                    .font(.custom("VT323-Regular", size: 46, relativeTo: .title))
+                    .font(.custom("VT323-Regular", size: 40, relativeTo: .title))
                     .foregroundStyle(.black)
 
                 Text(viewModel.catName)
@@ -33,49 +33,25 @@ struct HomeView: View {
                         .foregroundStyle(.black)
 
                     SlideToStartView {
-                        viewModel.startIntro()
                         onStart()
                     }
                 }
             }
             .padding()
         }
-        .frame(width: 450, height: 450)
+        .frame(width: 480, height: 480)
     }
-    
+
     private var backgroundLayer: some View {
-         ZStack {
-             Color.white
-                 .ignoresSafeArea()
+        PixelWeatherBackgroundView(theme: viewModel.backgroundTheme)
+    }
 
-             /*
-             Later when your pixel background is ready:
-
-             Image("home_background")
-                 .resizable()
-                 .interpolation(.none)
-                 .scaledToFill()
-                 .ignoresSafeArea()
-             */
-         }
-     }
-    
     private var catIntroView: some View {
-        ZStack {
-
-            Image("cat_idle_0")
-                .resizable()
-                .interpolation(.none)
-                .scaledToFit()
-                .frame(width: 230, height: 230)
-                .border(Color.red, width: 2)
-        }
-    }
+        CatSpriteView(animationTag: viewModel.catAnimationTag)
     }
     
+}
     
-
-#Preview {
-    HomeView()
-   
+#Preview("HomeView only") {
+    HomeView(viewModel: HomeViewModel())
 }

@@ -71,6 +71,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F2F2D2DC2FB9D54F0056FA83 /* SpriteKit */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SpriteKit;
+			sourceTree = "<group>";
+		};
 		F2FFA4BA2FB2481600781CCF /* Resources */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Resources;
@@ -113,6 +118,7 @@
 				F23C6D982FB1D2C0007661D3 /* PomodoroCatTests */,
 				F23C6DA22FB1D2C0007661D3 /* PomodoroCatUITests */,
 				F23C6D892FB1D2BE007661D3 /* Products */,
+				F2F2D2DC2FB9D54F0056FA83 /* SpriteKit */,
 				F23C6DC12FB1E175007661D3 /* Views */,
 				F23C6DC52FB1E1B7007661D3 /* Services */,
 				F23C6DD22FB1E2B3007661D3 /* Models */,
@@ -152,6 +158,7 @@
 				F23C6DC52FB1E1B7007661D3 /* Services */,
 				F23C6DCC2FB1E228007661D3 /* ViewModels */,
 				F23C6DD22FB1E2B3007661D3 /* Models */,
+				F2F2D2DC2FB9D54F0056FA83 /* SpriteKit */,
 				F2FFA4BA2FB2481600781CCF /* Resources */,
 			);
 			name = PomodoroCat;

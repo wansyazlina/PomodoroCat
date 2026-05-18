@@ -33,7 +33,6 @@ struct SlideToStartView: View {
             starKnob
         }
         .frame(width: barWidth, height: sliderHeight)
-        .border(Color.red, width: 1)
         .contentShape(Rectangle())
         .gesture(
             DragGesture()
