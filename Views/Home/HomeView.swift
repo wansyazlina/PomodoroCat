@@ -48,7 +48,7 @@ struct HomeView: View {
     }
 
     private var catIntroView: some View {
-        CatSpriteView(animationTag: viewModel.catAnimationTag)
+        CatSpriteView(catState: viewModel.catState) // it takes the value from HomeViewModel and sends catState to CatSpriteView
     }
     
 }

@@ -7,13 +7,16 @@
 import SwiftUI
 import SpriteKit
 
+import SwiftUI
+import SpriteKit
+
 struct CatSpriteView: View {
-    let animationTag: String
+    let catState: CatState
 
     var body: some View {
         SpriteView(
             scene: {
-                let scene = CatScene(animationTag: animationTag)
+                let scene = CatScene(catState: catState)
                 scene.size = CGSize(width: 240, height: 240)
                 scene.scaleMode = .resizeFill
                 scene.backgroundColor = .clear

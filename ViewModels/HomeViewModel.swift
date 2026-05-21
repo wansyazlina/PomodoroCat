@@ -10,11 +10,10 @@ import SwiftUI
 
 @Observable
 class HomeViewModel {
-    var catName: String = "moiran"
+    var catName: String = "moiran" //setting moiran as default for now
+    var catState: CatState = .idle // CatState is set to idle when user is at HomeView
     
-    var catState: CatState = .idle
-    
-    // Set sunny for testing your new background
+    // Set sunny for testing new background
     var weatherCondition: WeatherCondition = .sunny
     
     func startIntro() {

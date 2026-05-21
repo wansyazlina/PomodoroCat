@@ -7,6 +7,19 @@
 		<dict>
 			<key>destination</key>
 			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>39</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>38</string>
+					<key>Timestamp</key>
+					<string>800812103.5263079</string>
+				</dict>
 				<key>rebasable-url</key>
 				<dict>
 					<key>base</key>
@@ -14,30 +27,24 @@
 					<key>payload</key>
 					<dict>
 						<key>relative-path</key>
-						<string>Models/CatAnimation.swift</string>
+						<string>ViewModels/HomeViewModel.swift</string>
 					</dict>
 				</dict>
-				<key>type</key>
-				<string>DVTDocumentLocation</string>
 			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
+			<key>text-context</key>
 			<dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>Models/CatAnimation.swift</string>
-					</dict>
-				</dict>
-				<key>type</key>
-				<string>DVTDocumentLocation</string>
+				<key>focused</key>
+				<string>    
+</string>
+				<key>leading</key>
+				<string>        }
+    }
+</string>
+				<key>trailing</key>
+				<string>    var backgroundTheme: PixelBackgroundTheme {
+        switch weatherCondition {
+        case .sunny:
+</string>
 			</dict>
 			<key>type</key>
 			<string>bookmark</string>

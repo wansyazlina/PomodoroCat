@@ -35,11 +35,43 @@ struct AsepriteFrameTag: Codable {
 }
 
 final class AsepriteAnimationLoader {
-    static func loadAnimation(
+    static func loadAnimationOnce(
         jsonName: String,
         spritesheetName: String,
         tagName: String
     ) -> SKAction? {
+        guard let actions = loadFrameActions(
+            jsonName: jsonName,
+            spritesheetName: spritesheetName,
+            tagName: tagName
+        ) else {
+            return nil
+        }
+
+        return .sequence(actions)
+    }
+
+    static func loadLoopingAnimation(
+        jsonName: String,
+        spritesheetName: String,
+        tagName: String
+    ) -> SKAction? {
+        guard let actions = loadFrameActions(
+            jsonName: jsonName,
+            spritesheetName: spritesheetName,
+            tagName: tagName
+        ) else {
+            return nil
+        }
+
+        return .repeatForever(.sequence(actions))
+    }
+
+    private static func loadFrameActions(
+        jsonName: String,
+        spritesheetName: String,
+        tagName: String
+    ) -> [SKAction]? {
         guard let url = Bundle.main.url(forResource: jsonName, withExtension: "json") else {
             print("Could not find JSON file")
             return nil
@@ -62,10 +94,21 @@ final class AsepriteAnimationLoader {
         let sheetWidth = sheetTexture.size().width
         let sheetHeight = sheetTexture.size().height
 
-        let sortedFrames = asepriteData.frames.sorted { $0.key < $1.key }
+        let sortedFrames = asepriteData.frames.sorted {
+            if $0.value.frame.y == $1.value.frame.y {
+                return $0.value.frame.x < $1.value.frame.x
+            }
+
+            return $0.value.frame.y < $1.value.frame.y
+        }
+        guard sortedFrames.indices.contains(tag.from),
+              sortedFrames.indices.contains(tag.to),
+              tag.from <= tag.to else {
+            print("Invalid frame range for tag:", tagName)
+            return nil
+        }
 
         let selectedFrames = Array(sortedFrames[tag.from...tag.to])
-
         var actions: [SKAction] = []
 
         for (_, frameData) in selectedFrames {
@@ -81,10 +124,10 @@ final class AsepriteAnimationLoader {
             let texture = SKTexture(rect: textureRect, in: sheetTexture)
             texture.filteringMode = .nearest
 
-            actions.append(.setTexture(texture, resize: true)) //The resize: true makes sure that the dimensions isnt zero
+            actions.append(.setTexture(texture, resize: true))
             actions.append(.wait(forDuration: Double(frameData.duration) / 1000.0))
         }
 
-        return .repeatForever(.sequence(actions))
+        return actions
     }
 }

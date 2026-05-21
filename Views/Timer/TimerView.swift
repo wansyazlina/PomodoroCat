@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TimerView: View {
     @Bindable var homeViewModel: HomeViewModel
+    @State private var timerViewModel = TimerViewModel()
 
     var body: some View {
         ZStack {
@@ -16,21 +17,24 @@ struct TimerView: View {
                 theme: homeViewModel.backgroundTheme
             )
 
-            VStack {
-                CatSpriteView(
-                    animationTag: homeViewModel.catAnimationTag
-                )
+            VStack(spacing: 18) {
+                ZStack {
+                    Text(timerViewModel.formattedTime)
+                        .font(.custom("Silkscreen-Bold", size: 72))
+                        .foregroundStyle(.pink)
+                        .offset(x: 4, y: 4)
 
-                Text("Timer View")
-                    .font(.title)
-
-                Button("Start Break") {
-                    homeViewModel.updateCatState(.resting)
+                    Text(timerViewModel.formattedTime)
+                        .font(.custom("Silkscreen-Bold", size: 72))
+                        .foregroundStyle(Color("fontGrey"))
                 }
+         
 
-                Button("Complete") {
-                    homeViewModel.updateCatState(.completed)
-                }
+                CatSpriteView(catState: timerViewModel.catState)
+
+                Text(timerViewModel.timerTitle)
+                    .font(.custom("Silkscreen-Bold", size: 22))
+                    .foregroundStyle(.white)
             }
         }
         .frame(width: 480, height: 480)
